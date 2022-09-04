@@ -1,0 +1,61 @@
+<% if (user != undefined){ %>
+    <span class="username"><%= user.user%></span>
+    <a href="/panel" class="panel">panel</a>
+<% } %>
+<header>
+    <div class="contact phone">
+        <div class="contactIco">
+            <span class="material-symbols-rounded">
+                call
+                </span>
+        </div>
+
+        <span>501134519</span> 
+    </div>
+    <div class="contact">
+        <div class="contactIco">
+            <span class="material-symbols-rounded">
+                mail
+                </span>
+        </div>
+
+        <span>recznamyjnia@gmail.com</span> 
+    </div>
+    <div class="contact">
+        <div class="contactIco">
+            <span class="material-symbols-rounded">
+                alarm
+            </span>
+        </div>
+
+        <span>Pon - Pt: 7:00 - 17:00, Sob: 8:00 - 13.00</span> 
+    </div>
+    <div class="contact">
+        <div class="contactIco">
+            <span class="material-symbols-rounded">
+                location_on
+                </span>
+        </div>
+
+        <span>ul. Łukasiewicza 3, Kraków</span> 
+    </div>
+    
+    <div class="fb">
+        <a href="https://www.facebook.com/Klimatyzacja-mobilna-100613312266958/">
+            <img src="/img\fb.png" alt="fb" width="30px" height="auto">
+        </a>
+    </div>
+</header>
+<nav>
+    <div class="title">
+        <a href="/">
+            <img src="/img/LogoBig.png" alt="logo" height="100px">
+        </a>
+    </div>
+    <div class="nav">
+        <div class="home navlink <%- click == 'home' ? 'clicked' : "" %>"> <a href="/">Strona główna</a></div>
+        <div class="klima navlink <%- click == 'klima' ? 'clicked' : "" %>"><a href="">Klimatyzacja mobilna</a></div>
+        <div class="clear navlink <%- click == 'clear' ? 'clicked' : "" %>"><a href="">Myjnia</a></div>
+        <div class="rent navlink <%- click == 'rent' ? 'clicked' : "" %>"><a href="/rent">Wypożyczalnia aut</a></div>
+    </div>
+</nav>

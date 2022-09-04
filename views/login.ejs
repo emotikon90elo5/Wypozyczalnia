@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/login.css">
+    <%- include('head')%>
+    <title>Login
+    </title>
+    
+</head>
+<body>
+    <%- include('header', {click: "", user: user}); %> 
+    <div class="center">
+        <div class="card">
+            <form action="/login" method="post">
+                Login<br>
+                <input type="text" name="username"><br>
+                Hasło<br>
+                <input type="password" name="password"><br>
+                <input type="submit" value="Zaloguj">
+            </form>
+        </div>
+    </div>
+    <%- include('footer')%>
+</body>
+</html>

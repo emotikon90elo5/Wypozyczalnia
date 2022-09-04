@@ -1,0 +1,22 @@
+form{
+    text-align: center;
+}
+.inputTitle{
+    font-size: 20px;
+}
+
+  .img{
+    width: 240px;
+    height: 160px;
+    background-size: 240px 160px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  input[type="text"], input[type="number"],  input[type="date"], input[type="submit"]{
+    padding: 12px;
+    outline: 0;
+    border: 0;
+    border: 1px solid black;
+    border-radius: 25px;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/addCar.css">
+    <%- include('head')%>
+    <title>Admin panel
+    </title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/js/v_script.js"></script>
+</head>
+<body>
+    <%- include('header', {click: "", user: user}); %> 
+    <div class="form">
+        <form action="/panel/addCar" method="post">
+
+            <label for="name" class="inputTitle">Nazwa</label><br>
+            <input autocomplete="off" required type="text" name="name" id="name"><br>
+
+            <label for="engine" class="inputTitle">Silnik</label><br>
+            <input autocomplete="off" required type="text" name="engine" id="engine"><br>
+
+            <label for="power" class="inputTitle">Moc silnika w kM</label><br>
+            <input autocomplete="off" required type="number" name="power" id="power"><br>
+
+            <label for="combustion" class="inputTitle">Spalanie w l/100km</label><br>
+            <input autocomplete="off" required type="number" name="combustion" id="combustion"><br>
+
+            <label for="gearBox" class="inputTitle">Skrzynia biegów</label><br>
+            <input autocomplete="off" required type="text" name="gearBox" id="gearBox"><br>
+
+            <label for="production" class="inputTitle">Rok produkcji</label><br>
+            <input autocomplete="off" required type="number" name="production" id="production"><br>
+
+            <label for="slots" class="inputTitle">Liczba miejsc</label><br>
+            <input autocomplete="off" required type="number" name="slots" id="slots"><br>
+
+            <label for="fuel" class="inputTitle">Rodzaj paliwa</label><br>
+                <input autocomplete="off" required type="radio" name="fuel" id="disel" value="disel">
+                <label for="disel">Disel</label> 
+
+                <input autocomplete="off" required type="radio" name="fuel" id="petrol" value="petrol">
+                <label for="petrol">Benzyna</label> 
+
+                <input autocomplete="off" required type="radio" name="fuel" id="hybrida" value="hybrida">
+                <label for="hybrida">Hybryda</label> <br>
+
+            <label for="bodyType" class="inputTitle">Typ nadwozia</label><br>
+            <input autocomplete="off" required type="text" name="bodyType" id="bodyType"><br>
+
+            <label for="extraInfo" class="inputTitle">Dodatkowe info</label><br>
+            <input autocomplete="off" required type="text" name="extraInfo" id="extraInfo"><br>
+
+            <label for="registrationNumber" class="inputTitle">Numer rejstracyjny</label><br>
+            <input autocomplete="off" required type="text" name="registrationNumber" id="registrationNumber"><br>
+            
+            <label for="mileage" class="inputTitle">Przebieg w km</label><br>
+            <input autocomplete="off" required type="number" name="mileage" id="mileage"><br>
+
+            <label for="carReviewMileage" class="inputTitle">Ostatni przegląd</label><br>
+            <label for="carReviewMileage">Przebieg</label><br>
+            <input autocomplete="off" required type="number" name="carReviewMileage" id="carReviewMileage"><br>
+
+            <label for="carReviewDate">Data</label><br>
+            <input autocomplete="off" required type="date" name="carReviewDate" id="carReviewDate"><br>
+
+            <label for="carInsurance" class="inputTitle">Dzień ostatniego ubespieczenia</label><br>
+            <input autocomplete="off" required type="date" placeholder="dd-mm-yyyy" value=""
+            min="1997-01-01" max="2030-12-31" name="carInsurance" id="carInsurance"><br>
+            <div class="images">
+                <div class="pic">
+                  add
+                </div>
+              </div>
+            <input type="submit" value="Wstaw">
+        </form>
+    </div>
+    <%- include('footer')%>
+</body>
+</html>
