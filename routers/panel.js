@@ -1,93 +1,75 @@
-const express = require('express')
-const router = new express.Router()
-const User = require('../models/user');
-const passport = require('passport');
-const fs = require('fs')
-const formidable = require('formidable');
+const express = require("express");
+const router = new express.Router();
+const formidable = require("formidable");
+const Car = require("./../models/car");
 
-const formMiddleWare = (req, res, next) => {
-  const form = formidable({});
+router.get("/panel", (req, res) => {
+    if (req.session.passport == undefined)
+        return res.render("login", { user: req.session.passport });
+    res.render("panel", { user: req.session.passport });
+});
 
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-      next(err);
-      return;
-    }
-    req.fields = fields;
-    req.files = files;
-    next();
-  });
-};
+router.get("/panel/addCar", (req, res) => {
+    if (req.session.passport == undefined)
+        return res.render("login", { user: req.session.passport });
+    res.render("addCar", { user: req.session.passport });
+});
 
-router.get('/panel', (req,res)=>{
-    if(req.session.passport == undefined) return res.render('login', {user: req.session.passport})
-    res.render('panel', {user: req.session.passport})
-})
+router.post("/panel/addCar", (req, res) => {
+    console.log("hmm");
+    const options = {
+        uploadDir: `./public/img/u/`,
+        keepExtensions: true,
+        multiples: true,
+    };
 
-router.get('/panel/addCar', (req,res)=>{
-  if(req.session.passport == undefined) return res.render('login', {user: req.session.passport})
-  res.render('addCar', {user: req.session.passport})
-})
+    let form = new formidable.IncomingForm(options);
+    form.parse(req, (err, fields, files) => {
+        if (err) {
+            return res.status(400).json({
+                error: "Image could not upload",
+            });
+        }
+        let list = [];
+        files.somefile.forEach((element) => {
+            list[list.length] = element.newFilename;
+        });
 
-router.post('/panel/addCar', formMiddleWare, (req,res)=>{
+        const car = new Car({
+            info: {
+                main: {
+                    name: fields.name,
+                    engine: fields.engine,
+                    slots: fields.slots,
+                    gearBox: fields.gearBox,
+                    production: fields.production,
+                    fuel: fields.fuel,
+                },
+                subPage: {
+                    power: fields.power,
+                    combustion: fields.combustion,
+                    bodyType: fields.bodyType,
+                    extraInfo: fields.extraInfo,
+                },
+            },
+            dataForApi: {
+                registrationNumber: fields.registrationNumber,
+                mileage: fields.mileage,
+                carReview: {
+                    mileage: fields.carReviewMileage,
+                    date: fields.carReviewDate,
+                },
+                carInsurance: {
+                    date: fields.carInsurance,
+                },
+            },
+            imgs: list,
+        });
+        car.save().then();
 
-
-  console.log({fields: req.fields,
-    files: req.files,})
-  if(req.session.passport == undefined) return res.json({status:false, error: 403})
-  try{
-    const elements = Object.values(req.body)
-    
-    elements.forEach(element => {
-      if(element==null) return res.json({status:false, error: 'not element'})
+        res.json({ status: true });
     });
-
-  }catch(err){
-    console.log(err)
-    return res.json({status:false, error: 400})
-  }
-  res.json({status:true})
-
-
-})
-// router.get('/reg', (req,res)=>{
-//     res.render('reg')
-// })
-router.post('/login', passport.authenticate('local'), (req, res) => {
-    User.findOne({
-      username: req.body.username
-    }, () => {
-      res.statusCode = 302;
-      res.redirect('/panel')
-    })
-  });
-
-// router.post('/signup', (req, res) => {
-//   User.register(new User({
-//       username: req.body.username
-//     }),
-//     req.body.password, (err) => {
-//       if (err) {
-//         res.statusCode = 500;
-//         res.setHeader('Content-Type', 'application/json');
-//         res.json({
-//           err: err
-//         });
-//       } else {
-//         passport.authenticate('local')(req, res, () => {
-//           User.findOne({
-//             username: req.body.username
-//           }, () => {
-//             res.statusCode = 200;
-//             res.setHeader('Content-Type', 'application/json');
-//             res.json({
-//               success: true,
-//               status: 'Registration Successful!',
-//             });
-//           });
-//         })
-//       }
-//     })
-// });
+    console.log("work");
+});
 
 module.exports = router;

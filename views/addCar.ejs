@@ -12,7 +12,7 @@
 <body>
     <%- include('header', {click: "", user: user}); %> 
     <div class="form">
-        <form action="/panel/addCar" method="post">
+        <form action="/panel/addCar" enctype="multipart/form-data" method="post">
 
             <label for="name" class="inputTitle">Nazwa</label><br>
             <input autocomplete="off" required type="text" name="name" id="name"><br>
@@ -24,7 +24,7 @@
             <input autocomplete="off" required type="number" name="power" id="power"><br>
 
             <label for="combustion" class="inputTitle">Spalanie w l/100km</label><br>
-            <input autocomplete="off" required type="number" name="combustion" id="combustion"><br>
+            <input autocomplete="off" step="0.1" required type="number" name="combustion" id="combustion"><br>
 
             <label for="gearBox" class="inputTitle">Skrzynia biegów</label><br>
             <input autocomplete="off" required type="text" name="gearBox" id="gearBox"><br>
@@ -67,11 +67,7 @@
             <label for="carInsurance" class="inputTitle">Dzień ostatniego ubespieczenia</label><br>
             <input autocomplete="off" required type="date" placeholder="dd-mm-yyyy" value=""
             min="1997-01-01" max="2030-12-31" name="carInsurance" id="carInsurance"><br>
-            <div class="images">
-                <div class="pic">
-                  add
-                </div>
-              </div>
+            <input type="file" name="somefile" id="somefile" multiple="multiple" type="image/png,image/jpeg">
             <input type="submit" value="Wstaw">
         </form>
     </div>
