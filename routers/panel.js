@@ -16,7 +16,6 @@ router.get("/panel/addCar", (req, res) => {
 });
 
 router.post("/panel/addCar", (req, res) => {
-    console.log("hmm");
     const options = {
         uploadDir: `./public/img/u/`,
         keepExtensions: true,
@@ -31,10 +30,19 @@ router.post("/panel/addCar", (req, res) => {
             });
         }
         let list = [];
-        files.somefile.forEach((element) => {
-            list[list.length] = element.newFilename;
-        });
+        let imgs =[]
+        imgs[0] = files.file1
+        imgs[1] = files.file2
+        imgs[2] = files.file3
+        imgs[3] = files.file4
+        imgs[4] = files.file5
+        imgs[5] = files.file6
 
+        imgs.forEach((element)=>{
+            if(element){
+                list[list.length] = element.newFilename
+            }
+        })
         const car = new Car({
             info: {
                 main: {
@@ -50,6 +58,12 @@ router.post("/panel/addCar", (req, res) => {
                     combustion: fields.combustion,
                     bodyType: fields.bodyType,
                     extraInfo: fields.extraInfo,
+                    price:{
+                        f7: fields.price7,
+                        f14: fields.price14,
+                        f30: fields.price30,
+                        f31: fields.price31
+                    }
                 },
             },
             dataForApi: {
@@ -69,7 +83,6 @@ router.post("/panel/addCar", (req, res) => {
 
         res.json({ status: true });
     });
-    console.log("work");
 });
 
 module.exports = router;

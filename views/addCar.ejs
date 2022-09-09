@@ -67,7 +67,29 @@
             <label for="carInsurance" class="inputTitle">Dzień ostatniego ubespieczenia</label><br>
             <input autocomplete="off" required type="date" placeholder="dd-mm-yyyy" value=""
             min="1997-01-01" max="2030-12-31" name="carInsurance" id="carInsurance"><br>
-            <input type="file" name="somefile" id="somefile" multiple="multiple" type="image/png,image/jpeg">
+
+            <label for="price7" class="inputTitle">Cena za 1-7 dni w zł</label><br>
+            <input autocomplete="off" required type="number" name="price7" id="price7"><br>
+
+            <label for="price14" class="inputTitle">Cena za 8-14 dni w zł</label><br>
+            <input autocomplete="off" required type="number" name="price14" id="price14"><br>
+
+            <label for="price30" class="inputTitle">Cena za 15-30 dni w zł</label><br>
+            <input autocomplete="off" required type="number" name="price30" id="price30"><br>
+            
+            <label for="price31" class="inputTitle">Cena za ponad miesiąc</label><br>
+            <input autocomplete="off" required type="number" name="price31" id="price31"><br>
+            
+
+            <label for="file1">Miniaturka auta</label><br>
+            <input type="file" required name="file1" id="file1" onchange="load(this)" accept="image/png, image/jpeg"><br>
+            <div class="mini" id="mini1"></div>
+            <label for="file2">Zdjęcia auta</label><br>
+            <input type="file" name="file2" id="file2"  accept="image/png,image/jpeg"><br>
+            <input type="file" name="file3" id="file3" accept="image/png,image/jpeg"><br>
+            <input type="file" name="file4" id="file4" accept="image/png,image/jpeg"><br>
+            <input type="file" name="file5" id="file5" accept="image/png,image/jpeg"><br>
+            <input type="file" name="file6" id="file6" accept="image/png,image/jpeg"><br>
             <input type="submit" value="Wstaw">
         </form>
     </div>

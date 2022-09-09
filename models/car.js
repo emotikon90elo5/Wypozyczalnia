@@ -14,6 +14,12 @@ let carSchema = new mongoose.Schema({
             combustion: mongoose.Types.Decimal128,
             bodyType: String,
             extraInfo: String,
+            price:{
+                f7:Number,
+                f14:Number,
+                f30:Number,
+                f31:Number
+            }
         },
     },
     dataForApi: {

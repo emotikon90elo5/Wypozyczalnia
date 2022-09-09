@@ -3,6 +3,7 @@
     <a href="/panel" class="panel">panel</a>
 <% } %>
 <header>
+    <div class="contactinfo">
     <div class="contact phone">
         <div class="contactIco">
             <span class="material-symbols-rounded">
@@ -39,7 +40,7 @@
 
         <span>ul. Łukasiewicza 3, Kraków</span> 
     </div>
-    
+</div>
     <div class="fb">
         <a href="https://www.facebook.com/Klimatyzacja-mobilna-100613312266958/">
             <img src="/img\fb.png" alt="fb" width="30px" height="auto">
@@ -52,10 +53,25 @@
             <img src="/img/LogoBig.png" alt="logo" height="100px">
         </a>
     </div>
+    <div class="titlephone">
+        <a href="/">
+            <img src="/img/LogoMini.png" alt="logo" height="100px">
+        </a>
+    </div>
     <div class="nav">
         <div class="home navlink <%- click == 'home' ? 'clicked' : "" %>"> <a href="/">Strona główna</a></div>
         <div class="klima navlink <%- click == 'klima' ? 'clicked' : "" %>"><a href="">Klimatyzacja mobilna</a></div>
         <div class="clear navlink <%- click == 'clear' ? 'clicked' : "" %>"><a href="">Myjnia</a></div>
         <div class="rent navlink <%- click == 'rent' ? 'clicked' : "" %>"><a href="/rent">Wypożyczalnia aut</a></div>
+    </div>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">
+            menu</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="/">Strona główna</a>
+          <a href="#">Klimatyzacja mobilna</a>
+          <a href="#">Myjnia</a>
+          <a href="/rent">Wypożyczalnia aut</a>
+        </div>
     </div>
 </nav>
