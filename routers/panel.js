@@ -80,7 +80,7 @@ router.post("/panel/addCar", (req, res) => {
             imgs: list,
         });
         car.save().then();
-
+        require("./index").reset();
         res.json({ status: true });
     });
 });

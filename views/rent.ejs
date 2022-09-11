@@ -3,10 +3,30 @@
 <head>
     <title>Strona Główna</title>
     <%- include('head'); %> 
+    <link rel="stylesheet" href="/css/rent.css">
 </head>
 <body>
     <%- include('header', {click: "rent", user: user}); %> 
-    
+    <div class="cars">
+    <% cars.forEach(element => {%>
+        <div class="car">
+            <img src="/img/u/<%= element.imgs[0]%>" width="360px" height="240px">
+            <span class="carName"><%= element.info.main.name%></span>
+            <div class="info">
+                <span class="infoICO">directions_car</span><span class="infoName">Silnik:  </span><span class="infoContent"> <%= element.info.main.fuel == "disel" ? "Diesel" : "" %>  <%= element.info.main.engine%></span>
+            </div>
+            <div class="info">
+                <span class="infoICO">airline_seat_recline_extra</span><span class="infoName">Ilość miejsc:  </span><span class="infoContent"> <%= element.info.main.slots%></span>
+            </div>
+            <div class="info"> 
+                <span class="infoICO">alarm</span><span class="infoName">Rok produkcji:  </span><span class="infoContent"><%= element.info.main.production%></span>
+            </div>
+            <div class="info">
+                <br><span class="infoICO">settings</span><span class="infoName">Skrzynia biegów:  </span><span class="infoContent"><%= element.info.main.gearBox%></span>
+            </div>
+        </div>
+    <%});%>
+</div>
     <%- include('footer'); %> 
 </body>
 </html>
